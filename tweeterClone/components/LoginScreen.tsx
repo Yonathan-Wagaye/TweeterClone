@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet, Button , TouchableOpacity} from "react-native";
+import { View, Text, TextInput, StyleSheet, Button , TouchableOpacity, Image} from "react-native";
 
 const LoginScreen = () => {
 
@@ -12,6 +12,13 @@ const LoginScreen = () => {
     }
     return (
         <View style={styles.container}>
+            <View style = {styles.logoContainer}>
+                <Image
+                    source = {require('../images/logo.png')}
+                    style={styles.logo}
+                />
+            </View>
+            
             <Text style={styles.signInText}>Sign in to Twitter</Text>
             <TextInput 
                 placeholder="Phone, email, or username"
@@ -22,8 +29,16 @@ const LoginScreen = () => {
                 autoCapitalize="none"
                 style={styles.input}
             />
-            <TouchableOpacity style={styles.signInButton}>
-                <Text style={styles.signInButtonText}>Sign In</Text>
+            <TextInput
+                placeholder="Password"
+                placeholderTextColor="#fff"
+                onChangeText={setPassword}
+                value={username}
+                secureTextEntry
+                style={styles.input} 
+            />
+            <TouchableOpacity style={styles.signInButton} onPress={handleLogin}>
+                <Text style={styles.signInButtonText} >Sign In</Text>
             </TouchableOpacity>
             <TouchableOpacity>
                 <Text style={styles.forgotPasswordText}>Forgot password?</Text>
@@ -101,8 +116,17 @@ const styles = StyleSheet.create({
         color: '#fff', // White color for the text
         marginBottom: 10,
     },
-    buttonText: {
-        
+    logoContainer: {
+        position: 'absolute',
+        top: 50,
+        alignItems: 'center',
+        width: '100%',
+        padding: 20,
+    },
+    logo: {
+        width: 150,
+        height: 150,
+        marginBottom: 20,
     },
     // Add other styles as needed
 });

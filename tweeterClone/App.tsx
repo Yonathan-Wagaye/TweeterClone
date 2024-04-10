@@ -1,6 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, useColorScheme } from 'react-native';
 import LoginScreen from './components/LoginScreen'; 
+import RegistrationScreenOne from './components/RegistrationScreenOne';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -15,7 +16,7 @@ function App(): React.JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <LoginScreen /> 
+      <RegistrationScreenOne/>
     </SafeAreaView>
   );
 }
