@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from "react-native";
+import Logo from "./Logo";
+
 
 const RegistrationScreenOne = () => 
 {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [dateOfBirth, setDateOfBirth] = useState('');
+
     return (
         <View style={styles.container}>
+            <View style={styles.stepContainer}>
+                <Text style={styles.stepText}>Step 1 of 3</Text>
+            </View>
+            
+            <Logo/>
             <Text style ={styles.title}>Create your account</Text>
             <TextInput
                 placeholder="Name"
@@ -22,36 +31,80 @@ const RegistrationScreenOne = () =>
                 autoCapitalize="none"
                 style={styles.input}     
             />
+            <View style={styles.dateContainer}>
+                <Text style={styles.dateText}>Date Of Birth</Text>
+                <Text style={styles.dateNote}>This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.</Text>
+                <TextInput
+                    placeholder="MM-DD-YYYY"
+                    value={dateOfBirth}
+                    onChangeText={setDateOfBirth}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    style={styles.input}     
+                />
+            </View>
+            
             <TouchableOpacity style={styles.nextButton}>
                 <Text style={styles.nextButtonText} >Next</Text>
             </TouchableOpacity>
+            
         </View>
     )
 };
 
 const styles = StyleSheet.create({
+    
     container: {
-        flex: 1,
-        justifyContent: "center",
+        flexGrow: 1,
+        justifyContent: "flex-start", // Changed from center to flex-start to align items to the top
         alignItems: "center",
         padding: 20,
-        width: "80%",
+        width: "100%"
          
+    },
+    stepContainer: {
+        alignSelf: 'flex-start',
+        width: '100%', 
+        marginBottom: 10,
+    },
+    stepText: {
+        fontWeight: 'bold',
+        fontSize: 16,
     },
     title: {
         fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 20,
+        marginTop: 30,
         
     },
     input: {
         width: "100%",
-        height: 40,
-        borderStartColor: 'gray',
+        borderColor: 'gray',
         borderWidth: 1,
         borderRadius: 5,
-        marginBottom: 10,
+        marginBottom: 20,
         padding: 10,
+    },
+    dateText: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        textAlign:"left",
+        marginBottom: 10,
+
+    },
+    dateNote: {
+       fontSize: 11,
+       marginTop: 5,
+       marginBottom: 10, 
+    },
+    dateContainer:{
+        alignSelf:'stretch',
+        alignItems: 'flex-start',
+        marginTop: 5,
+        marginBottom: 20,
+        padding: 5,
+
     },
     nextButton: {
         backgroundColor: '#000', 

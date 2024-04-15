@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, Button , TouchableOpacity, Image} from "react-native";
+import Logo from "./Logo";
 
 const LoginScreen = () => {
 
@@ -12,13 +13,8 @@ const LoginScreen = () => {
     }
     return (
         <View style={styles.container}>
-            <View style = {styles.logoContainer}>
-                <Image
-                    source = {require('../images/logo.png')}
-                    style={styles.logo}
-                />
-            </View>
             
+            <Logo/>
             <Text style={styles.signInText}>Sign in to Twitter</Text>
             <TextInput 
                 placeholder="Phone, email, or username"
@@ -56,10 +52,11 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         backgroundColor: '#000', 
         width: '100%',
+        paddingTop: 150,
     },
     signInText: {
         fontSize: 24,
@@ -116,18 +113,7 @@ const styles = StyleSheet.create({
         color: '#fff', // White color for the text
         marginBottom: 10,
     },
-    logoContainer: {
-        position: 'absolute',
-        top: 50,
-        alignItems: 'center',
-        width: '100%',
-        padding: 20,
-    },
-    logo: {
-        width: 150,
-        height: 150,
-        marginBottom: 20,
-    },
+    
     // Add other styles as needed
 });
   
