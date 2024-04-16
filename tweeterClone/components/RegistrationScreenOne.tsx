@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from "react-native";
-import Logo from "./Logo";
+import Logo from "../utils/Logo";
+import { RootStackParamList } from "./types";
+import { StackScreenProps } from "@react-navigation/stack";
 
+type RegistrationScreenOneProps = StackScreenProps<RootStackParamList, 'RegistrationScreenOne'>;
 
-const RegistrationScreenOne = () => 
+const RegistrationScreenOne: React.FC<RegistrationScreenOneProps> = ({navigation}) => 
 {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -44,7 +47,7 @@ const RegistrationScreenOne = () =>
                 />
             </View>
             
-            <TouchableOpacity style={styles.nextButton}>
+            <TouchableOpacity style={styles.nextButton} onPress={() => navigation.navigate('RegistrationScreenTwo')}>
                 <Text style={styles.nextButtonText} >Next</Text>
             </TouchableOpacity>
             

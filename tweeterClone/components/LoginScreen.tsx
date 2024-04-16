@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, Button , TouchableOpacity, Image} from "react-native";
-import Logo from "./Logo";
+import { RootStackParamList } from "./types";
+import { StackScreenProps } from "@react-navigation/stack";
+import Logo from "../utils/Logo";
 
-const LoginScreen = () => {
+type LoginScreenProps = StackScreenProps<RootStackParamList, 'LoginScreen'>;
+
+const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -41,7 +45,7 @@ const LoginScreen = () => {
             </TouchableOpacity>
             <View style={styles.signUpContainer}>
                 <Text style={styles.signUpText}>Don't have an account? </Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=> navigation.navigate('RegistrationScreenOne')}>
                     <Text style={styles.signUpButtonText}>Sign up</Text>
                 </TouchableOpacity>
             </View>
